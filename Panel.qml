@@ -313,6 +313,9 @@ Panel {
       root.applyMsg = "theme name is not a safe slug"
       return
     }
+    // Already the active theme: nothing to apply (wallpaper-only still proceeds).
+    if (!root.wallpaperOnly && root.currentThemeSlug() !== ""
+        && root.currentThemeSlug() === String(v.n).toLowerCase()) return
     root.applySlug = v.n
     root.applyWarn = ""
     root.applyPhase = 1
